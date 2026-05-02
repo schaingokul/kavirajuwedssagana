@@ -1,0 +1,54 @@
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.date-wrapper {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    font-weight: 500;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    /* Subtle background for non-event days */
+}
+
+/* Pulse animation for the special dates */
+.engagement-date,
+.wedding-date {
+    background: #c2185b;
+    color: white;
+    animation: pulse 2s infinite ease-in-out;
+    animation-delay: 1.5s;
+    /* Starts after the sequence finishes */
+    z-index: 2;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(194, 24, 91, 0.7);
+    }
+
+    70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 10px rgba(194, 24, 91, 0);
+    }
+
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(194, 24, 91, 0);
+    }
+}
+
+.tag {
+    position: absolute;
+    top: -10px;
+    right: -5px;
+    font-size: 14px;
+}
