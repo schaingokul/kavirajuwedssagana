@@ -23,7 +23,7 @@ import SplitText from "./SplitText/SplitText";
 
 // OVERLAY IMAGE
 import overlayImg from "../assets/img/god.png";
-import TextType from "./TextType/TextType";
+
 import { motion } from "framer-motion";
 
 const images = [img1, img2, img3, img4, img5, img6];
