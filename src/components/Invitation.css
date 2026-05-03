@@ -359,15 +359,28 @@ font-weight: lighter;
   font-weight: lighter;
 }
 
+.venue-address, .venue-name{
+  font-size: 16px;
+  letter-spacing: 0.8px;
+  font-weight: lighter;
+}
+.venue-event{
+  font-size: 16px;
+  letter-spacing: 0.8px;
+  font-weight: lighter;
+}
+
 /* CONTACT BOX */
 .contact-box {
-  
-  font-weight: lighter;
+
  
   margin-bottom: 20px;
   width: 100%;
   max-width: 350px;
   
+}
+.contact-title, .contact-list{
+    font-weight: lighter;
 }
 
 .contact-box h3 {

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/purity */
 import React, { useEffect, useRef, useState } from "react";
 import "./Invitation.css";
 import { useLocation } from "react-router-dom";
@@ -25,12 +26,17 @@ import SplitText from "./SplitText/SplitText";
 import overlayImg from "../assets/img/god.png";
 
 import { motion } from "framer-motion";
+import RotatingText from "./RotatingText/rotatingText";
+import TrueFocus from "./TrueFocus/TrueFocus";
+import { s } from "framer-motion/client";
 
 const images = [img1, img2, img3, img4, img5, img6];
 
 const Invitation: React.FC = () => {
   const location = useLocation();
   const name = location.state?.name || "Dear Guest";
+
+  const [showSecond, setShowSecond] = useState(false);
 
   const calendarRef = useRef<HTMLDivElement>(null);
 
@@ -98,8 +104,11 @@ const Invitation: React.FC = () => {
     seconds: 0,
   });
 
+  const [startTime] = useState(Date.now());
+
   useEffect(() => {
     const timer = setInterval(() => {
+      const now = new Date().getTime();
       const diff = weddingDate.getTime() - new Date().getTime();
 
       if (diff > 0) {
@@ -110,10 +119,15 @@ const Invitation: React.FC = () => {
           seconds: Math.floor((diff / 1000) % 60),
         });
       }
+      // 2. New Logic: Show May 29 after 3 seconds
+      // This checks if 3000ms have passed since the page loaded
+      if (!showSecond && now - startTime > 3000) {
+        setShowSecond(true);
+      }
     }, 1000);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [showSecond, startTime]);
 
   const handleAnimationComplete = () => {
     console.log("All letters have animated!");
@@ -280,8 +294,50 @@ const Invitation: React.FC = () => {
 
         {/* INFO */}
         <p className="ceremony-time">
-          May 28 - Engagement (After 6 PM) <br />
-          May 29 - Wedding (6 AM - 7 AM)
+          {/* <RotatingText
+            texts={[
+              "May 28 — Engagement (After 6 PM)",
+              "May 29 — Marriage (6 AM – 7 AM)",
+            ]}
+            mainClassName="px-2 sm:px-2 md:px-3 bg-cyan-300 text-black overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg"
+            staggerFrom="last"
+            initial={{ y: "100%" }}
+            animate={{ y: 0 }}
+            exit={{ y: "-120%" }}
+            staggerDuration={0.025}
+            splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
+            transition={{ type: "spring", damping: 30, stiffness: 400 }}
+            rotationInterval={2000}
+            splitBy="characters"
+            auto
+            loop
+          /> */}
+
+          <TrueFocus
+            sentence="MAY-28 Engagement@6PM"
+            manualMode={false}
+            blurAmount={5}
+            borderColor="#c2185b"
+            animationDuration={0.6}
+            pauseBetweenAnimations={1}
+            onAnimationComplete={() => {
+              if (!showSecond) setShowSecond(true);
+            }}
+          />
+          <br />
+          <br />
+          {showSecond && (
+            <TrueFocus
+              sentence="MAY-29 Wedding@6AM"
+              manualMode={false}
+              blurAmount={5}
+              borderColor="#c2185b"
+              animationDuration={0.6}
+              pauseBetweenAnimations={1}
+            />
+          )}
+          {/* May 28 - Engagement (After 6 PM) <br />
+          May 29 - Wedding (6 AM - 7 AM) */}
         </p>
 
         <p className="ceremony-note">
@@ -317,9 +373,7 @@ const Invitation: React.FC = () => {
 
         {/* FULL ADDRESS */}
         <p className="venue-address">
-          V3J8+82H,Madurai - Thirumangalam Rd,
-          <br />
-          Devi Nagar, Balaji Nagar,
+          Poonga Stop,
           <br />
           Thiruparankundram,
           <br />
