@@ -65,6 +65,8 @@ const SplitText: React.FC<SplitTextProps> = ({
       if (!ref.current || !text || !fontsLoaded) return;
       // Prevent re-animation if already completed
       if (animationCompletedRef.current) return;
+      // Force ScrollTrigger to refresh its calculations for the new layout
+      ScrollTrigger.refresh();
 
       const el = ref.current as HTMLElement & {
         _rbsplitInstance?: GSAPSplitText;
@@ -121,7 +123,9 @@ const SplitText: React.FC<SplitTextProps> = ({
                 start,
                 once: true,
                 fastScrollEnd: true,
+                invalidateOnRefresh: true, // Forces recalculation on refresh
                 anticipatePin: 0.4,
+                refreshPriority: 1,
               },
               onComplete: () => {
                 animationCompletedRef.current = true;

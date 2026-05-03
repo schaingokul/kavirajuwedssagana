@@ -149,26 +149,27 @@ const Invitation: React.FC = () => {
         <div className="overlay" />
 
         <h2>Our Story</h2>
-        {/* <p>
-          A beautiful journey that started with friendship, grew into love, and
-          now celebrates forever together{" "}
-        </p> */}
-
-        <SplitText
-          text="A beautiful journey that started with friendship, grew into love, and
+        <div>
+          {/* A beautiful journey that started with friendship, grew into love, and
+          now celebrates forever together{" "} */}
+          <SplitText
+            text="A beautiful journey that started with friendship, grew into love, and
           now celebrates forever together "
-          className="text-2xl font-semibold text-center"
-          delay={50}
-          duration={1.25}
-          ease="power3.out"
-          splitType="chars"
-          from={{ opacity: 0, y: 40 }}
-          to={{ opacity: 1, y: 0 }}
-          threshold={0.1}
-          rootMargin="-100px"
-          textAlign="center"
-          onLetterAnimationComplete={handleAnimationComplete}
-        />
+            className="text-2xl font-semibold text-center"
+            delay={50}
+            tag="p"
+            duration={1.25}
+            ease="power3.out"
+            splitType="chars"
+            from={{ opacity: 0, y: 40 }}
+            to={{ opacity: 1, y: 0 }}
+            threshold={0.5}
+            rootMargin="-20px"
+            textAlign="center"
+            onLetterAnimationComplete={handleAnimationComplete}
+          />
+        </div>
+
         <br />
         {/* <h3 className="weds">
           <span>
