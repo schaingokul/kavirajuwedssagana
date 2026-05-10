@@ -26,9 +26,9 @@ import SplitText from "./SplitText/SplitText";
 import overlayImg from "../assets/img/god.png";
 
 import { motion } from "framer-motion";
-import RotatingText from "./RotatingText/rotatingText";
+// import RotatingText from "./RotatingText/rotatingText";
 import TrueFocus from "./TrueFocus/TrueFocus";
-import { s } from "framer-motion/client";
+// import { s } from "framer-motion/client";
 
 const images = [img1, img2, img3, img4, img5, img6];
 
