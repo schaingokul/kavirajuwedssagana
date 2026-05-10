@@ -389,10 +389,10 @@ const Invitation: React.FC = () => {
           <p className="contact-title"> Contact</p>
 
           <div className="contact-list">
-            <a href="tel:+917373344243">✆ +91 73733 44243</a>
-            <a href="tel:+919080634239">✆ +91 90806 34239</a>
             <a href="tel:+919751229732">✆ +91 97512 29732</a>
             <a href="tel:+919865338950">✆ +91 98653 38950</a>
+            <a href="tel:+919080634239">✆ +91 90806 34239</a>
+            <a href="tel:+918870552884">✆ +91 88705 52884</a>
             <a href="tel:+918608107567">✆ +91 86081 07567</a>
           </div>
         </div>
