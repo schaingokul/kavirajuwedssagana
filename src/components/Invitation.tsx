@@ -351,7 +351,7 @@ const Invitation: React.FC = () => {
           /> */}
 
           <TrueFocus
-            sentence="MAY-28 Engagement@6PM"
+            sentence="MAY-28 Engagement @6PM"
             manualMode={false}
             blurAmount={5}
             borderColor="#c2185b"
@@ -365,7 +365,7 @@ const Invitation: React.FC = () => {
           <br />
           {showSecond && (
             <TrueFocus
-              sentence="MAY-29 Wedding@6AM"
+              sentence="MAY-29 Wedding @6AM"
               manualMode={false}
               blurAmount={5}
               borderColor="#c2185b"
