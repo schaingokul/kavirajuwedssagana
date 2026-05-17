@@ -1,9 +1,13 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-require-imports */
 /* eslint-disable react-hooks/purity */
 import React, { useEffect, useRef, useState } from "react";
 import "./Invitation.css";
 import { useLocation } from "react-router-dom";
 
 import coupleImg from "../assets/img/pinkswing.png";
+import handInHandImg from "./hand-in-hand.png";
+import mrgIconimage from "./wedding-couple.png";
 
 // BACKGROUNDS
 import heroBg from "../assets/img/invi_bg.jpg";
@@ -240,6 +244,14 @@ const Invitation: React.FC = () => {
 
         {/* CALENDAR */}
         <div className="calendar-grid">
+          {[...Array(5)].map((_, index) => (
+            <div
+              key={`empty-${index}`}
+              className="date-wrapper empty-slot"
+              style={{ opacity: 0 }}
+            />
+          ))}
+
           {[...Array(31)].map((_, i) => {
             const day = i + 1;
 
@@ -285,8 +297,33 @@ const Invitation: React.FC = () => {
               >
                 {day}
 
-                {isEngagement && <span className="tag">💍</span>}
-                {isWedding && <span className="tag">💖</span>}
+                {isEngagement && (
+                  // <span className="tag">💍</span>
+                  <img
+                    src={mrgIconimage} // Adjust the path to your assets folder
+                    alt="Wedding"
+                    className="tag"
+                    style={{
+                      width: "24px",
+                      height: "24px",
+                      objectFit: "contain",
+                      verticalAlign: "middle",
+                    }}
+                  />
+                )}
+                {isWedding && (
+                  <img
+                    src={handInHandImg} // Adjust the path to your assets folder
+                    alt="Wedding"
+                    className="tag"
+                    style={{
+                      width: "24px",
+                      height: "24px",
+                      objectFit: "contain",
+                      verticalAlign: "middle",
+                    }}
+                  />
+                )}
               </div>
             );
           })}
@@ -455,7 +492,20 @@ const Invitation: React.FC = () => {
       >
         <div className="overlay" />
 
-        <h2>With Love & Gratitude 💖</h2>
+        <h2>
+          With Love & Gratitude{" "}
+          <img
+            src={handInHandImg} // Adjust the path to your assets folder
+            alt="Wedding"
+            className="tag"
+            style={{
+              width: "24px",
+              height: "24px",
+              objectFit: "contain",
+              verticalAlign: "middle",
+            }}
+          />
+        </h2>
 
         <p>
           Thank you for being part of our special day <br />
